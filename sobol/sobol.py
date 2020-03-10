@@ -69,26 +69,22 @@ def generator(n_dim):
     V[:, :8] = POLY[:, 1:]
     V[0, :] = 1
     for i in range(1, n_dim):
-        m = len(np.binary_repr(poly[i])) - 1  # largest m where 2^m < poly[i]
+        m = len(np.binary_repr(poly[i])) - 1
         include = np.array([int(b) for b in np.binary_repr(poly[i])[1:]])
         for j in range(m, LOG_MAX):
             V[i, j] = V[i, j - m]
             for k in range(m):
                 if include[k]:
                     V[i, j] = np.bitwise_xor(V[i, j], 2 ** (k + 1) * V[i, j - k - 1])
-    V *= 2 ** np.arange(LOG_MAX)[::-1]
-    V = V[:n_dim]
+    V = V[:n_dim] * 2 ** np.arange(LOG_MAX)[::-1]
 
-    lastq = np.zeros(n_dim, dtype=int)
-
+    point = np.zeros(n_dim, dtype=int)
     for i in range(2 ** LOG_MAX):
-        sample = lastq / 2 ** LOG_MAX
-        col = bit_lo0(i)
-        lastq = np.bitwise_xor(lastq, V[:, col])
-        yield sample
+        point = np.bitwise_xor(point, V[:, bit_lo0(i)])
+        yield point / 2 ** LOG_MAX
 
 
-def sample(n_dim, n_points, skip=1):
+def sample(n_dim, n_points, skip=0):
     """Generate a Sobol point set.
 
     Parameters
