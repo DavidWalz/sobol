@@ -20,6 +20,15 @@ def test_rightmost_zero():
 
 
 def test_sample():
+    # function test
+    x = sobol.sample(dimension=30, n_points=100, skip=10000)
+    assert x.shape == (100, 30)
+
+    # repeated calls
+    x1 = sobol.sample(dimension=100, n_points=10, skip=0)
+    x2 = sobol.sample(dimension=100, n_points=10, skip=0)
+    np.testing.assert_allclose(x1, x2)
+
     # test against pytorch's SobolEngine
     x1 = sobol.sample(dimension=1111, n_points=100, skip=0)
     x2 = torch.quasirandom.SobolEngine(dimension=1111, seed=0).draw(100)
