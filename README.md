@@ -1,16 +1,28 @@
+[![PyPI version](https://badge.fury.io/py/sobol2.svg)](https://badge.fury.io/py/sobol2)
 [![Build Status](https://travis-ci.org/DavidWalz/sobol.svg?branch=master)](https://travis-ci.org/DavidWalz/sobol)
 # Sobol
-Pythonic implementation of the Sobol sequence for generating super-uniformly distributed points in up to 1111 dimensions.
+Concise and fast implementation of the Sobol sequence for generating super-uniformly distributed points in up to 1111 dimensions.
 
 ### Usage 
 ```python
 import sobol
+
 sobol.sample(dimension=3, n_points=5)
 array([[0.5  , 0.5  , 0.5  ],
        [0.75 , 0.25 , 0.75 ],
        [0.25 , 0.75 , 0.25 ],
        [0.375, 0.375, 0.625],
        [0.875, 0.875, 0.125]])
+```
+Skip the first `n` points:
+```python
+sobol.sample(dimension=3, n_points=5, skip=10000)
+```
+Sample point by point using the underlying generator:
+```python
+sob = sobol.generator(dimension=5)
+for i in range(10):
+    print(next(sob))
 ```
 
 ### References
