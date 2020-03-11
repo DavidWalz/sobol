@@ -1,6 +1,5 @@
 import numpy as np
 import sobol
-import torch
 
 
 def test_rightmost_zero():
@@ -29,7 +28,12 @@ def test_sample():
     x2 = sobol.sample(dimension=100, n_points=10, skip=0)
     np.testing.assert_allclose(x1, x2)
 
-    # test against pytorch's SobolEngine
-    x1 = sobol.sample(dimension=1111, n_points=100, skip=0)
-    x2 = torch.quasirandom.SobolEngine(dimension=1111, seed=0).draw(100)
-    np.testing.assert_allclose(x1, x2)
+    try:
+        import torch
+
+        # test against pytorch's SobolEngine
+        x1 = sobol.sample(dimension=1111, n_points=100, skip=0)
+        x2 = torch.quasirandom.SobolEngine(dimension=1111, seed=0).draw(100)
+        np.testing.assert_allclose(x1, x2)
+    except ModuleNotFoundError:
+        pass
