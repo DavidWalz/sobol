@@ -1,12 +1,12 @@
 # Sobol
 Pythonic implementation of the Sobol quasi-random sequence for generating super-uniformly distributed points in 1-40 dimensions.
 
-This is rewrite of the [python version](https://people.sc.fsu.edu/~jburkardt/py_src/sobol/sobol.html) by John Burkardt which was written in a hilariously Fortran-like way, making it a bit hard to understand.
+This is rewrite of the [python version](https://people.sc.fsu.edu/~jburkardt/py_src/sobol/sobol.html) by John Burkardt which was written in a hilariously Fortran-like way, making it quite hard to understand.
 
 ### Usage 
 ```python
 import sobol
-sobol.sample(n_dim=3, n_points=5)
+sobol.sample(dimension=3, n_points=5)
 ```
 yields
 ```python
