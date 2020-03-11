@@ -4,10 +4,10 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    name="sobol",
+    name="sobol2",
     version="0.1",
     author="David Walz",
-    description="Sobol sequence for low-discrepency quasi-random numbers",
+    description="Pythonic implemention of a Sobol sequence generator",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/DavidWalz/sobol",
