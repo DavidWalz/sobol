@@ -35,5 +35,5 @@ def test_sample():
         x1 = sobol.sample(dimension=1111, n_points=100, skip=0)
         x2 = torch.quasirandom.SobolEngine(dimension=1111, seed=0).draw(100)
         np.testing.assert_allclose(x1, x2)
-    except ModuleNotFoundError:
+    except ImportError:
         pass
