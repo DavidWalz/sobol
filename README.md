@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/DavidWalz/sobol.svg?branch=master)](https://travis-ci.org/DavidWalz/sobol)
 # Sobol
 Pythonic implementation of the Sobol sequence for generating super-uniformly distributed points in up to 1111 dimensions.
 
