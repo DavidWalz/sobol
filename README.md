@@ -1,4 +1,4 @@
-[![PyPI version](https://badge.fury.io/py/SobolSequence.svg)](https://badge.fury.io/py/sobol2)
+[![PyPI version](https://badge.fury.io/py/SobolSequence.svg)](https://badge.fury.io/py/SobolSequence)
 [![Build Status](https://travis-ci.org/DavidWalz/sobol.svg?branch=master)](https://travis-ci.org/DavidWalz/sobol)
 # Sobol
 Concise and fast implementation of the Sobol sequence for generating low-discrepancy quasi-random numbers in up to 1111 dimensions.
