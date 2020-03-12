@@ -28,6 +28,11 @@ def test_sample():
     x2 = sobol.sample(dimension=100, n_points=10, skip=0)
     np.testing.assert_allclose(x1, x2)
 
+    # skip ahead
+    x1 = sobol.sample(dimension=5, n_points=110, skip=0)[100:]
+    x2 = sobol.sample(dimension=5, n_points=10, skip=100)
+    np.testing.assert_allclose(x1, x2)
+
     # test against pytorch's SobolEngine
     try:
         import torch

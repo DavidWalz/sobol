@@ -10,7 +10,7 @@ def rightmost_zero(n):
     return i
 
 
-def generator(dimension):
+def generator(dimension, skip=0):
     """Generator for the Sobol sequence"""
     DIMS = 1111  # maximum number of dimensions
     BITS = 30  # maximum number of bits
@@ -35,7 +35,13 @@ def generator(dimension):
     V = V[:dimension] * 2 ** np.arange(BITS)[::-1]
 
     point = np.zeros(dimension, dtype=int)
-    for i in range(2 ** BITS):
+
+    # fast-forward
+    for i in range(skip):
+        point = np.bitwise_xor(point, V[:, rightmost_zero(i)])
+
+    # start sampling
+    for i in range(skip, 2 ** BITS):
         point = np.bitwise_xor(point, V[:, rightmost_zero(i)])
         yield point / 2 ** BITS
 
@@ -57,9 +63,7 @@ def sample(dimension, n_points, skip=0):
     array, shape=(n_points, dimension)
         Samples from the Sobol sequence.
     """
-    sobol = generator(dimension)
-    for i in range(skip):
-        next(sobol)
+    sobol = generator(dimension, skip)
     points = np.empty((n_points, dimension))
     for i in range(n_points):
         points[i] = next(sobol)
