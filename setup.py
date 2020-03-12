@@ -4,15 +4,15 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    name="sobol2",
-    version="0.1",
+    name="SobolSequence",
+    version="0.2",
     author="David Walz",
-    description="Pythonic implemention of a Sobol sequence generator",
+    description="Sobol sequence generator",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/DavidWalz/sobol",
     packages=find_packages(),
-    package_data={"sobol": ["*.tsv"]},
+    package_data={"sobol": ["sobol1111.tsv"]},
     python_requires=">=3.5",
     install_requires=["numpy"],
     test_require=["pytest", "torch"],
