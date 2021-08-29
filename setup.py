@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="SobolSequence",
-    version="0.2",
+    version="0.2.1",
     author="David Walz",
     description="Sobol sequence generator",
     long_description=long_description,
@@ -20,7 +20,7 @@ setup(
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
-        "Development Status :: 5 - Production/Stable",
+        "Development Status :: 7 - Inactive",
         "Topic :: Scientific/Engineering",
     ],
 )
