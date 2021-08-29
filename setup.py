@@ -15,7 +15,7 @@ setup(
     package_data={"sobol": ["sobol1111.tsv"]},
     python_requires=">=3.5",
     install_requires=["numpy"],
-    test_require=["pytest", "torch"],
+    test_require=["pytest"],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",

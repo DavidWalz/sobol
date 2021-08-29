@@ -32,13 +32,3 @@ def test_sample():
     x1 = sobol.sample(dimension=5, n_points=110, skip=0)[100:]
     x2 = sobol.sample(dimension=5, n_points=10, skip=100)
     np.testing.assert_allclose(x1, x2)
-
-    # test against pytorch's SobolEngine
-    try:
-        import torch
-
-        x1 = sobol.sample(dimension=1111, n_points=100, skip=0)
-        x2 = torch.quasirandom.SobolEngine(dimension=1111, seed=0).draw(100)
-        np.testing.assert_allclose(x1, x2)
-    except ImportError:
-        pass
