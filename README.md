@@ -14,21 +14,29 @@ pip install sobolsequence
 ```python
 import sobol
 
-sobol.sample(dimension=3, n_points=5)
-array([[0.5  , 0.5  , 0.5  ],
-       [0.75 , 0.25 , 0.75 ],
-       [0.25 , 0.75 , 0.25 ],
-       [0.375, 0.375, 0.625],
-       [0.875, 0.875, 0.125]])
+sobol.sample(dimension=3, n_points=8)
+array([[0.5   , 0.5   , 0.5   ],
+       [0.75  , 0.25  , 0.75  ],
+       [0.25  , 0.75  , 0.25  ],
+       [0.375 , 0.375 , 0.625 ],
+       [0.875 , 0.875 , 0.125 ],
+       [0.625 , 0.125 , 0.375 ],
+       [0.125 , 0.625 , 0.875 ],
+       [0.1875, 0.3125, 0.3125]])
 ```
-Skip the first `n` points:
+
+Skip the first `skip` points:
 ```python
-sobol.sample(dimension=3, n_points=5, skip=10000)
+X = sobol.sample(dimension=3, n_points=64, skip=1024)
+plt.scatter(X[:, 0], X[:, 1]
 ```
+
+![](resources/example.png)
+
 Sample point by point using the underlying generator:
 ```python
 sob = sobol.generator(dimension=5)
-for i in range(10):
+for i in range(8):
     print(next(sob))
 ```
 
